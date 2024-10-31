@@ -39,6 +39,7 @@ public class SecurityConfig {
         //customizar toda questão de segurança do projeto
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .anyRequest().authenticated()) // qualquer requisição deve ser autorizada
                 .csrf(csrf -> csrf.disable()) //proteção contra CSRF (Cross-Site Request Forgery)
